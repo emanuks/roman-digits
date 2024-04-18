@@ -40,4 +40,18 @@ TEST_CASE("Roman Numerals - Invalid", "[roman_numerals]") {
     REQUIRE(roman_numerals_to_decimal("G") == -1);
 
     REQUIRE(roman_numerals_to_decimal("i") == -1);
+
+    REQUIRE(roman_numerals_to_decimal("IIII") == -1);
+
+    REQUIRE(roman_numerals_to_decimal("VV") == -1);
+
+    REQUIRE(roman_numerals_to_decimal("XXXX") == -1);
+
+    REQUIRE(roman_numerals_to_decimal("LL") == -1);
+
+    REQUIRE(roman_numerals_to_decimal("CCCC") == -1);
+
+    REQUIRE(roman_numerals_to_decimal("DD") == -1);
+
+    REQUIRE(roman_numerals_to_decimal("MMMM") == -1);
 }
