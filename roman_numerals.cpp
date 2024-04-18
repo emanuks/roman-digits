@@ -62,9 +62,11 @@ int roman_numerals_to_decimal(std::string roman_numerals) {
 
         if (*c != previous_character) {
             if (current_priority == previous_priority - 1
-                    && can_have_multiple_consecutive_occurrences(*c)) {
+                    && can_have_multiple_consecutive_occurrences(*c))
                 current_value *= -1;
-            }
+            else if (current_priority <= previous_priority
+                        && !can_have_multiple_consecutive_occurrences(*c))
+                return -1;
 
             previous_character = *c;
             occurrence_qty = 0;
