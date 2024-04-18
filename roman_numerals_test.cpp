@@ -19,6 +19,10 @@ TEST_CASE("Roman Numerals - Valid", "[roman_numerals]") {
 
     REQUIRE(roman_numerals_to_decimal("V") == 5);
 
+    REQUIRE(roman_numerals_to_decimal("X") == 10);
+    REQUIRE(roman_numerals_to_decimal("XX") == 20);
+    REQUIRE(roman_numerals_to_decimal("XXX") == 30);
+
     REQUIRE(roman_numerals_to_decimal("L") == 50);
 
     REQUIRE(roman_numerals_to_decimal("C") == 100);
