@@ -48,7 +48,7 @@ int roman_numerals_to_decimal(std::string roman_numerals) {
     int decimal = 0;
     int occurrence_qty = 0;
     int priority = -1;
-    int previous_character = 'I';
+    int previous_character = '-';
     std::reverse(roman_numerals.begin(), roman_numerals.end());
 
     std::string::iterator c;
@@ -61,12 +61,16 @@ int roman_numerals_to_decimal(std::string roman_numerals) {
             return -1;
 
         if (*c != previous_character) {
-            if (current_priority == previous_priority - 1
-                    && can_have_multiple_consecutive_occurrences(*c))
-                current_value *= -1;
-            else if (current_priority <= previous_priority
-                        && !can_have_multiple_consecutive_occurrences(*c))
-                return -1;
+            if (previous_priority > 0) {
+                if (current_priority == previous_priority - 1
+                        && can_have_multiple_consecutive_occurrences(*c))
+                    current_value *= -1;
+                else if (current_priority <= previous_priority
+                            && !can_have_multiple_consecutive_occurrences(*c))
+                    return -1;
+                else if (current_priority < previous_priority - 1)
+                    return -1;
+            }
 
             previous_character = *c;
             occurrence_qty = 0;

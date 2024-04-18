@@ -112,4 +112,11 @@ TEST_CASE("Roman Numerals - Invalid", "[roman_numerals]") {
     REQUIRE(roman_numerals_to_decimal("VX") == -1);
     REQUIRE(roman_numerals_to_decimal("LC") == -1);
     REQUIRE(roman_numerals_to_decimal("DM") == -1);
+    REQUIRE(roman_numerals_to_decimal("IL") == -1);
+    REQUIRE(roman_numerals_to_decimal("IC") == -1);
+    REQUIRE(roman_numerals_to_decimal("ID") == -1);
+    REQUIRE(roman_numerals_to_decimal("IM") == -1);
+    REQUIRE(roman_numerals_to_decimal("XD") == -1);
+    REQUIRE(roman_numerals_to_decimal("XM") == -1);
+
 }
