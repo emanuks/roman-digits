@@ -108,4 +108,8 @@ TEST_CASE("Roman Numerals - Invalid", "[roman_numerals]") {
     REQUIRE(roman_numerals_to_decimal("DD") == -1);
 
     REQUIRE(roman_numerals_to_decimal("MMMM") == -1);
+
+    REQUIRE(roman_numerals_to_decimal("VX") == -1);
+    REQUIRE(roman_numerals_to_decimal("LC") == -1);
+    REQUIRE(roman_numerals_to_decimal("DM") == -1);
 }
