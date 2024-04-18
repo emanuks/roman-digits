@@ -125,6 +125,7 @@ TEST_CASE("Roman Numerals - Invalid", "[roman_numerals]") {
     REQUIRE(roman_numerals_to_decimal("IIC") == -1);
     REQUIRE(roman_numerals_to_decimal("IID") == -1);
     REQUIRE(roman_numerals_to_decimal("IIM") == -1);
+    REQUIRE(roman_numerals_to_decimal("IXL") == -1);
     REQUIRE(roman_numerals_to_decimal("XXL") == -1);
     REQUIRE(roman_numerals_to_decimal("XXC") == -1);
     REQUIRE(roman_numerals_to_decimal("XXD") == -1);

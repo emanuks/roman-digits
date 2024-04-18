@@ -47,8 +47,9 @@ bool can_have_multiple_consecutive_occurrences(char numeral) {
 int roman_numerals_to_decimal(std::string roman_numerals) {
     int decimal = 0;
     int occurrence_qty = 0;
-    int priority = -1;
+    int max_priority = -1;
     int previous_character = '-';
+    bool sub_flag = false;
     std::reverse(roman_numerals.begin(), roman_numerals.end());
 
     std::string::iterator c;
@@ -60,18 +61,31 @@ int roman_numerals_to_decimal(std::string roman_numerals) {
         if (current_value == -1)
             return -1;
 
+        if (sub_flag && current_priority < max_priority)
+            return -1;
+
         if (*c != previous_character) {
             if (previous_priority > 0) {
                 if (current_priority == previous_priority - 1
-                        && can_have_multiple_consecutive_occurrences(*c))
+                        && can_have_multiple_consecutive_occurrences(*c)) {
                     current_value *= -1;
-                else if (current_priority <= previous_priority
-                            && !can_have_multiple_consecutive_occurrences(*c))
+
+                    if (sub_flag)
+                        return -1;
+                    else
+                        sub_flag = true;
+                } else if (current_priority <= previous_priority
+                            && !can_have_multiple_consecutive_occurrences(*c)) {
                     return -1;
-                else if (current_priority < previous_priority - 1)
+                } else if (current_priority < previous_priority - 1) {
                     return -1;
+                } else {
+                    sub_flag = false;
+                }
             }
 
+            if (max_priority < current_priority)
+                max_priority = current_priority;
             previous_character = *c;
             occurrence_qty = 0;
         }
